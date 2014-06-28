@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id="body">
+      <button onclick="hitToPitcher()">Hit to Pitcher</button>
+      <br />
+      <svg id="foo" width="1500" height="1500">
+        <rect id="firstbase"  x="670" y="420" width="20" height="20" fill="gray" stroke="black" />
+        <rect id="secondbase" x="490" y="300" width="20" height="20" fill="gray" stroke="black" />
+        <rect id="thirdbase"  x="300" y="420" width="20" height="20" fill="gray" stroke="black" />
+        <rect id="home"       x="490" y="610" width="20" height="20" fill="gray" stroke="black" />
+
+        <circle id='c'  cx="500" cy="650"  r="10"></circle>
+        <circle id='p'  cx="500" cy="500"  r="10"></circle>
+
+        <circle id='cf' cx="500" cy="100"  r="10"></circle>
+        <circle id='lf' cx="250" cy="200"  r="10"></circle>
+        <circle id='rf' cx="750" cy="200"  r="10"></circle>
+
+        <circle id='thirdbaseman'  cx="330" cy="380"  r="10"></circle>
+        <circle id='shortstop'     cx="400" cy="300"  r="10"></circle>
+        <circle id='secondbaseman' cx="600" cy="300"  r="10"></circle>
+        <circle id='firstbaseman'  cx="680" cy="380"  r="10"></circle>
+
+      </svg>
+
+    </div>
+
+    <script>
+
+    function drawField() {
+      d3.select('#foo').append("svg:line")
+        .attr("x1", 0)
+        .attr("y1", 130)
+        .attr("x2", 500)
+        .attr("y2", 630)
+        .style("stroke", "black");
+
+      d3.select('#foo').append("svg:line")
+        .attr("x1", 1000)
+        .attr("y1", 130)
+        .attr("x2", 500)
+        .attr("y2", 630)
+        .style("stroke", "black");
+/*
+      d3.select('#firstbase')
+        .attr("transform", function(d) {
+          return "rotate(45)" 
+        });
+*/
+    };
+
+
+
+      drawField();
+
+      var circles = d3.selectAll("circle");
+      circles.style("fill", "darkgreen");
+
+
+      function hitToPitcher() {
+
+        d3.select('#foo').append("svg:circle")
+          .attr("id", "ball")
+          .attr("cx", 500)
+          .attr("cy", 600)
+          .attr("r", 5)
+          .style("fill", 'gold')
+          .style("stroke", 'black')
+          .transition()
+          .duration(2000)
+          .attr('cy', 540);
+
+        d3.select('#ball')
+          .transition()
+          .delay(2050)
+          .duration(1000)
+          .attr('cx', 660 )
+          .attr('cy', 420 );
+
+        d3.select('#p')
+          .transition()
+          .attr("cy", 538)
+          .delay(800)
+          .duration(1000);
+
+        d3.select('#c')
+          .transition()
+          .attr("cy", 580)
+          .delay(1000)
+          .duration(1500);
+
+        d3.select('#firstbaseman')
+          .transition()
+          .attr("cy", 420)
+          .attr("cx", 660)
+          .delay(800)
+          .duration(1000);
+
+        d3.select('#secondbaseman')
+          .transition()
+          .attr("cy", 380)
+          .attr("cx", 720)
+          .delay(800)
+          .duration(3000);
+
+        d3.select('#shortstop')
+          .transition()
+          .attr("cy", 330)
+          .attr("cx", 500)
+          .delay(800)
+          .duration(2000);
+
+        d3.select('#rf')
+          .transition()
+          .attr("cy", 300)
+          .attr("cx", 840)
+          .delay(800)
+          .duration(4000);
+
+        d3.select('#cf')
+          .transition()
+          .attr("cy", 250)
+          .delay(800)
+          .duration(3000);
+
+        d3.select('#lf')
+          .transition()
+          .attr("cy", 300)
+          .attr("cx", 400)
+          .delay(800)
+          .duration(4000);
+
+        d3.select('#thirdbaseman')
+          .transition()
+          .attr("cx", 330)
+          .attr("cy", 420)
+          .delay(800)
+          .duration(1000);
+      }
+
+    </script>
+  </body>
+</html>
+
