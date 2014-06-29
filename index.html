@@ -3,6 +3,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script src="baseball.js" charset="utf-8"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   </head>
   <body>
@@ -76,12 +77,15 @@
           .duration(2000)
           .attr('cy', 540);
 
-        d3.select('#ball')
-          .transition()
-          .delay(2050)
-          .duration(1000)
-          .attr('cx', 660 )
-          .attr('cy', 420 );
+        throwToFirstBase(2050);
+
+        coverFirstBase('#firstbaseman');
+        coverSecondBase('#shortstop');
+        coverThirdBase('#thirdbaseman');
+
+        backupFirstBase('#secondbaseman');
+        backupFirstBaseOF('#rf');
+
 
         d3.select('#p')
           .transition()
@@ -95,33 +99,12 @@
           .delay(1000)
           .duration(1500);
 
-        d3.select('#firstbaseman')
+        d3.select('#c')
           .transition()
-          .attr("cy", 420)
-          .attr("cx", 660)
-          .delay(800)
-          .duration(1000);
+          .delay(2050)
+          .attr('cy', 610)
+          .duration(1500);
 
-        d3.select('#secondbaseman')
-          .transition()
-          .attr("cy", 380)
-          .attr("cx", 720)
-          .delay(800)
-          .duration(3000);
-
-        d3.select('#shortstop')
-          .transition()
-          .attr("cy", 330)
-          .attr("cx", 500)
-          .delay(800)
-          .duration(2000);
-
-        d3.select('#rf')
-          .transition()
-          .attr("cy", 300)
-          .attr("cx", 840)
-          .delay(800)
-          .duration(4000);
 
         d3.select('#cf')
           .transition()
@@ -136,12 +119,6 @@
           .delay(800)
           .duration(4000);
 
-        d3.select('#thirdbaseman')
-          .transition()
-          .attr("cx", 330)
-          .attr("cy", 420)
-          .delay(800)
-          .duration(1000);
       }
 
     </script>
