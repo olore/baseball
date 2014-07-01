@@ -39,7 +39,7 @@ function coverThirdBase(who) {
     .attr("cx", 330)
     .attr("cy", 420)
     .delay(800)
-    .duration(1000);
+    .duration(1500);
 }
 
 function throwToFirstBase(delay) {
@@ -50,3 +50,22 @@ function throwToFirstBase(delay) {
     .attr('cx', 660 )
     .attr('cy', 420 );
 }
+
+function centerFielderRunIn() {
+  d3.select('#cf')
+    .transition()
+    .attr("cy", 250)
+    .delay(800)
+    .duration(3000);
+}
+
+function leftFielderRunIn() {
+  d3.select('#lf')
+    .transition()
+    .attr("cy", 300)
+    .attr("cx", 400)
+    .delay(800)
+    .duration(4000);
+}
+
+

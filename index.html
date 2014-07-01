@@ -4,11 +4,15 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <script src="baseball.js" charset="utf-8"></script>
+    <script src="buttons.js" charset="utf-8"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   </head>
   <body>
     <div id="body">
+
       <button onclick="hitToPitcher()">Hit to Pitcher</button>
+      <button onclick="hitToThirdBase()">Hit to 3B</button>
+
       <br />
       <svg id="foo" width="1500" height="1500">
         <rect id="firstbase"  x="670" y="420" width="20" height="20" fill="gray" stroke="black" />
@@ -63,63 +67,6 @@
       var circles = d3.selectAll("circle");
       circles.style("fill", "darkgreen");
 
-
-      function hitToPitcher() {
-
-        d3.select('#foo').append("svg:circle")
-          .attr("id", "ball")
-          .attr("cx", 500)
-          .attr("cy", 600)
-          .attr("r", 5)
-          .style("fill", 'gold')
-          .style("stroke", 'black')
-          .transition()
-          .duration(2000)
-          .attr('cy', 540);
-
-        throwToFirstBase(2050);
-
-        coverFirstBase('#firstbaseman');
-        coverSecondBase('#shortstop');
-        coverThirdBase('#thirdbaseman');
-
-        backupFirstBase('#secondbaseman');
-        backupFirstBaseOF('#rf');
-
-
-        d3.select('#p')
-          .transition()
-          .attr("cy", 538)
-          .delay(800)
-          .duration(1000);
-
-        d3.select('#c')
-          .transition()
-          .attr("cy", 580)
-          .delay(1000)
-          .duration(1500);
-
-        d3.select('#c')
-          .transition()
-          .delay(2050)
-          .attr('cy', 610)
-          .duration(1500);
-
-
-        d3.select('#cf')
-          .transition()
-          .attr("cy", 250)
-          .delay(800)
-          .duration(3000);
-
-        d3.select('#lf')
-          .transition()
-          .attr("cy", 300)
-          .attr("cx", 400)
-          .delay(800)
-          .duration(4000);
-
-      }
 
     </script>
   </body>
